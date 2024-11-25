@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import type { IFolder } from './models/IFolder.ts'
+import type { IFolder } from '../models/IFolder'
 import type { Ref } from 'vue'
 
-const props = defineProps({
+defineProps({
 	title: String
 })
 
@@ -32,7 +32,6 @@ function closeModalWindow() {
 	emit('closeModalWindow');
 }
 
-
 </script>
 
 
@@ -41,9 +40,19 @@ function closeModalWindow() {
 		<h3 style="background-color: blanchedalmond;">
 			{{ title }}
 		</h3>
-		<div class="content" v-for="mockFolder in mockFolders" :key="mockFolder.id">
 
-			{{ mockFolder.name }}
+		<div class="content">
+			Дерево папок 
+			<ul v-for="mockFolder in mockFolders" :key="mockFolder.id">
+				<li>
+					{{ mockFolder.name }}
+					<ul v-for="children in mockFolder.children" :key="children.id">
+						<li>
+							{{ children.name }}
+						</li>
+					</ul>
+				</li>
+				</ul>
 		</div>
 		<div class="container-btn_pozition">
 			<button type="button" @click="okModalWindow">
