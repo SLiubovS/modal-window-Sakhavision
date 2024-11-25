@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import ModalWindow from './components/ModalWindow.vue'
-import { ref } from 'vue'
+import ModalWindow from './components/ModalWindow.vue';
+import { ref } from 'vue';
 
 const openWindow = ref(false);
 
