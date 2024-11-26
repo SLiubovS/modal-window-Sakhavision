@@ -2,9 +2,7 @@
 import { ref } from 'vue';
 import type { IFolder } from '../models/IFolder';
 import type { Ref } from 'vue';
-import TreeItem from './TreeItem.vue';
-
-const showMockFolder = ref(false);
+import TreeItemComponent from './TreeItemComponent.vue';
 
 const mockFolders: Ref<Array<IFolder>> = ref([
     {
@@ -30,26 +28,11 @@ const mockFolders: Ref<Array<IFolder>> = ref([
     },
 ]);
 
-function openChild(mockFolder: IFolder): void {
-
-    if (mockFolder.children.length > 0) {
-        
-        showMockFolder.value = !showMockFolder.value;
-        return;
-    }
-}
 </script>
 
 <template>
-    <ul v-for="mockFolder in mockFolders" :key="mockFolder.id" @click="openChild(mockFolder)">
-        <li>
-            {{ mockFolder.name }}
-            <span v-show="showMockFolder">
-                <TreeItem :folder="mockFolder">
-                </TreeItem>
-            </span>
-        </li>
-    </ul>
+    <TreeItemComponent v-for="mockFolder in mockFolders" :key="mockFolder.id" :folder="mockFolder">
+    </TreeItemComponent>
 </template>
 
 <style scoped>

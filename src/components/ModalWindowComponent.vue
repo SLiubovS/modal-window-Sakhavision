@@ -5,16 +5,22 @@ defineProps<{
 	title: string
 }>()
 
+const emit = defineEmits<{
+  select: [id: number]
+  close: []
+}>()
+
 function okModalWindow() {
-	emit('closeModalWindow');
+	emit('select', 1); // 1 - id выбранной папки
+	// emit('close');
 	// Генерирует кастомное событие select, передающее идентификатор выбранной папки.
 
 }
 
-const emit = defineEmits(['close-modal-window', 'closeModalWindow']);
+
 
 function closeModalWindow() {
-	emit('closeModalWindow');
+	emit('close');
 }
 
 </script>

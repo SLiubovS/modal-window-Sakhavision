@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ModalWindow from './components/ModalWindow.vue';
+import ModalWindowComponent from './components/ModalWindowComponent.vue';
 import { ref } from 'vue';
 
 const openWindow = ref(false);
@@ -15,13 +15,13 @@ function closeModalWindow() {
 
 <template>
   <div>
-    <button type="button" @click="openModalWindow()">
+    <button type="button" @click="openModalWindow">
       Открыть
     </button>
   </div>
 
-  <ModalWindow title="Модальное окно" v-if="openWindow" @close-modal-window="closeModalWindow">
-  </ModalWindow>
+  <ModalWindowComponent title="Модальное окно" v-if="openWindow" @close="closeModalWindow">
+  </ModalWindowComponent>
 
 </template>
 
