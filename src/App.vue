@@ -5,7 +5,6 @@ import { ref } from 'vue';
 const openWindow = ref(false);
 
 function openModalWindow() {
-
   openWindow.value = true;
 }
 
@@ -21,13 +20,12 @@ function closeModalWindow() {
     </button>
   </div>
 
-    <ModalWindow title="Модальное окно" v-if="openWindow" @close-modal-window="closeModalWindow">
-    </ModalWindow>
+  <ModalWindow title="Модальное окно" v-if="openWindow" @close-modal-window="closeModalWindow">
+  </ModalWindow>
 
 </template>
 
 <style scoped>
-
 .active {
   background-color: gainsboro;
 }

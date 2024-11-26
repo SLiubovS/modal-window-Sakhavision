@@ -21,11 +21,13 @@ const mockFolders: Ref<Array<IFolder>> = ref([
 </script>
 
 <template>
-        <ul v-for="mockFolder in mockFolders" :key="mockFolder.id">
+    <ul>
+        <li v-for="mockFolder in mockFolders" :key="mockFolder.id">
             {{ mockFolder.name }}
-                <TreeItem :folder="mockFolder">
-                </TreeItem>
-        </ul>
+            <TreeItem :folder="mockFolder">
+            </TreeItem>
+        </li>
+    </ul>
 </template>
 
 <style scoped>

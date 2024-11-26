@@ -1,26 +1,9 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import type { IFolder } from '../models/IFolder';
-import type { Ref } from 'vue';
 import TreeComponent from './TreeComponent.vue';
 
 defineProps<{
 	title: string
 }>()
-
-// const mockFolders: Ref<Array<IFolder>> = ref([
-// 	{
-// 		id: 1, name: 'Папка 1', children: [
-// 			{ id: 2, name: 'Папка 1.1', children: [] },
-// 			{
-// 				id: 3, name: 'Папка 1.2', children: [
-// 					{ id: 4, name: 'Папка 1.2.1', children: [] }
-// 				]
-// 			}
-// 		]
-// 	},
-// 	{ id: 5, name: 'Папка 2', children: [] },
-// ]);
 
 function okModalWindow() {
 	alert('ok');
@@ -29,7 +12,6 @@ function okModalWindow() {
 const emit = defineEmits(['close-modal-window', 'closeModalWindow']);
 
 function closeModalWindow() {
-
 	emit('closeModalWindow');
 }
 
@@ -44,9 +26,8 @@ function closeModalWindow() {
 
 		<div class="content">
 			<TreeComponent>
-
 			</TreeComponent>
-			
+
 		</div>
 		<div class="container-btn_pozition">
 			<button type="button" @click="okModalWindow">

@@ -8,19 +8,11 @@ defineProps<{
 </script>
 
 <template>
-        <!-- <ul v-for="child in folder.children" :key="child.id">
-            <li>
-                {{ child.name }}
-                <TreeItem :folder="child">
-                </TreeItem>
-            </li>
-        </ul>    -->
-
-        <ul>
-            <li v-for="child in folder.children" :key="child.id">
-                {{ child.name }}
-                <TreeItem :folder="child">
-                </TreeItem>
-            </li>
-        </ul>   
+    <ul v-for="child in folder.children" :key="child.id">
+        <li>
+            {{ child.name }}
+            <TreeItem :folder="child">
+            </TreeItem>
+        </li>
+    </ul>
 </template>
