@@ -6,7 +6,9 @@ defineProps<{
 }>()
 
 function okModalWindow() {
-	alert('ok');
+	emit('closeModalWindow');
+	// Генерирует кастомное событие select, передающее идентификатор выбранной папки.
+
 }
 
 const emit = defineEmits(['close-modal-window', 'closeModalWindow']);
