@@ -28,10 +28,14 @@ const mockFolders: Ref<Array<IFolder>> = ref([
     },
 ]);
 
+function selectHandler(id: number): void {
+    console.log(id);
+}
+
 </script>
 
 <template>
-    <TreeItemComponent v-for="mockFolder in mockFolders" :key="mockFolder.id" :folder="mockFolder">
+    <TreeItemComponent v-for="mockFolder in mockFolders" :key="mockFolder.id" :folder="mockFolder" @select="selectHandler">
     </TreeItemComponent>
 </template>
 
