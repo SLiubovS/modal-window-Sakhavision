@@ -1,33 +1,31 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import type { IFolder } from '../models/IFolder';
 
 const props = defineProps<{
     folder: IFolder
+    selectedId: number | null
 }>()
 
 const emit = defineEmits<{
     select: [id: number]
 }>()
 
-const showChild = ref(false);
-const isSelected = ref(false);
+const isSelected = computed<boolean>(() => {
+    return (props.selectedId == props.folder.id);
+})
+
+const showChild = ref<boolean>(false);
 
 function openChild(): void {
 
     if (props.folder.children.length > 0) {
         showChild.value = !showChild.value;
     }
-    isSelected.value = true;
     emit('select', props.folder.id);
 }
 
-function clearSelect(): void {
-    isSelected.value = false;
-}
-
 function selectChildHandler(id: number): void  {
-    isSelected.value = false;
     emit('select', id);
 }
 
@@ -40,7 +38,7 @@ function selectChildHandler(id: number): void  {
                 {{ folder.name }}
             </span>
             <span v-show="showChild">
-                <TreeItemComponent v-for="child in folder.children" :key="child.id" :folder="child" @select="selectChildHandler">
+                <TreeItemComponent v-for="child in folder.children" :key="child.id" :folder="child" :selected-id="selectedId" @select="selectChildHandler">
                 </TreeItemComponent>
             </span>
         </li>

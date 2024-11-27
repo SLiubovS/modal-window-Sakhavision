@@ -7,6 +7,9 @@ import TreeItemComponent from './TreeItemComponent.vue';
 const emit = defineEmits<{
     select: [id: number]
 }>();
+
+const selectedId = ref<number | null>(null);
+
 const mockFolders: Ref<Array<IFolder>> = ref([
     {
         id: 1, name: 'Папка 1', children: [
@@ -32,13 +35,14 @@ const mockFolders: Ref<Array<IFolder>> = ref([
 ]);
 
 function selectHandler(id: number): void {
+    selectedId.value = id;
     emit('select', id);
 }
 
 </script>
 
 <template>
-    <TreeItemComponent v-for="mockFolder in mockFolders" :key="mockFolder.id" :folder="mockFolder" @select="selectHandler">
+    <TreeItemComponent v-for="mockFolder in mockFolders" :key="mockFolder.id" :folder="mockFolder" :selected-id="selectedId" @select="selectHandler">
     </TreeItemComponent>
 </template>
 

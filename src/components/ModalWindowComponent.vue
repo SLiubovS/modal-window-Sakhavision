@@ -54,7 +54,9 @@ function selectHandler(id: number): void {
 	position: absolute;
 	top: 50px;
 	left: 37%;
-	background-color: gainsboro;
+	border: 1px solid gainsboro;
+	border-radius: 30px;
+	padding: 10px;
 	display: grid;
 	grid-template-columns: 500px;
 	grid-template-rows: 100px 400px 50px;
