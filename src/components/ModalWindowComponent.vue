@@ -6,23 +6,24 @@ defineProps<{
 }>()
 
 const emit = defineEmits<{
-  select: [id: number]
+  select: [id: number | null]
   close: []
 }>()
 
+let selectedId: number | null = null;
+
 function okModalWindow() {
-	emit('select', 1); // 1 - id выбранной папки
-	// emit('close');
-	// Генерирует кастомное событие select, передающее идентификатор выбранной папки.
-
+	emit('select', selectedId);
+	emit('close');
 }
-
-
 
 function closeModalWindow() {
 	emit('close');
 }
 
+function selectHandler(id: number): void {
+	selectedId = id;
+}
 </script>
 
 
@@ -33,7 +34,7 @@ function closeModalWindow() {
 		</h3>
 
 		<div class="content">
-			<TreeComponent>
+			<TreeComponent @select="selectHandler">
 			</TreeComponent>
 
 		</div>

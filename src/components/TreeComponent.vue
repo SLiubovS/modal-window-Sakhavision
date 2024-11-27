@@ -4,6 +4,9 @@ import type { IFolder } from '../models/IFolder';
 import type { Ref } from 'vue';
 import TreeItemComponent from './TreeItemComponent.vue';
 
+const emit = defineEmits<{
+    select: [id: number]
+}>();
 const mockFolders: Ref<Array<IFolder>> = ref([
     {
         id: 1, name: 'Папка 1', children: [
@@ -29,7 +32,7 @@ const mockFolders: Ref<Array<IFolder>> = ref([
 ]);
 
 function selectHandler(id: number): void {
-    console.log(id);
+    emit('select', id);
 }
 
 </script>
