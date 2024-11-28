@@ -42,9 +42,10 @@ function selectHandler(id: number): void {
 </script>
 
 <template>
-    <TreeItemComponent v-for="mockFolder in mockFolders" :key="mockFolder.id" :folder="mockFolder" :selected-id="selectedId" @select="selectHandler">
+    <TreeItemComponent v-for="mockFolder in mockFolders" :key="mockFolder.id" 
+    :folder="mockFolder" :selected-id="selectedId" @select="selectHandler">
     </TreeItemComponent>
 </template>
 
-<style scoped>
+<style scoped>  
 </style>

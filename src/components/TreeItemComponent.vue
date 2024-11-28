@@ -34,10 +34,10 @@ function selectChildHandler(id: number): void  {
 <template>
     <ul>
         <li>
-            <span @click.self="openChild" :class="{ active: isSelected }">
+            <span @click.self="openChild" :class="{ active: isSelected }" class="modal__body-list modal__body-list_cursor">
                 {{ folder.name }}
             </span>
-            <span v-show="showChild">
+            <span v-show="showChild" class="container__list container__list_cursor">
                 <TreeItemComponent v-for="child in folder.children" :key="child.id" :folder="child" :selected-id="selectedId" @select="selectChildHandler">
                 </TreeItemComponent>
             </span>
@@ -47,6 +47,22 @@ function selectChildHandler(id: number): void  {
 
 <style scoped>
 .active {
-    background-color: yellow;
+    color:cornflowerblue;
+    font-style:italic;
 }
+
+ul {
+    list-style: none;
+}
+
+ul li:before {
+    content:  "—";
+    position: relative;
+    left:     -5px;
+}
+
+.modal__body-list_cursor {
+    cursor:pointer;
+}
+
 </style>

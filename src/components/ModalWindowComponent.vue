@@ -28,21 +28,22 @@ function selectHandler(id: number): void {
 
 
 <template>
-	<div class="container">
-		<h3 style="background-color: blanchedalmond;">
+	<div class="modal">
+
+		<h3 class="modal__header">
 			{{ title }}
 		</h3>
 
-		<div class="content">
+		<div class="modal__body">
 			<TreeComponent @select="selectHandler">
 			</TreeComponent>
 
 		</div>
-		<div class="container-btn_pozition">
-			<button type="button" @click="okModalWindow">
+		<div class="modal__footer modal__footer_pozition">
+			<button type="button" @click="okModalWindow" class="modal__button modal__button_cursor">
 				OK
 			</button>
-			<button type="button" @click="closeModalWindow">
+			<button type="button" @click="closeModalWindow" class="modal__button modal__button_cursor">
 				Закрыть
 			</button>
 		</div>
@@ -50,23 +51,48 @@ function selectHandler(id: number): void {
 </template>
 
 <style scoped>
-.container {
+.modal {
 	position: absolute;
 	top: 50px;
 	left: 37%;
 	border: 1px solid gainsboro;
-	border-radius: 30px;
-	padding: 10px;
+	border-radius: 20px;
 	display: grid;
 	grid-template-columns: 500px;
-	grid-template-rows: 100px 400px 50px;
+	grid-template-rows: 50px 300px 50px;
 	gap: 20px;
-	border: 2px solid black;
+	z-index: 10;
+	background-color: rgb(255, 255, 255);
+	box-sizing: border-box;
+	overflow:auto;
 }
 
-.container-btn_pozition {
+.modal__header {
+	display: grid;
+	border: 1px solid gainsboro;
+	/* border-radius: 20px; */
+	padding: 20px;
+	margin: 0;
+	/* align-items: center; */
+	align-content: center;
+}
+
+.modal__footer_pozition {
 	display: grid;
 	grid-template-columns: 100px 100px;
-	gap: 300px;
+	gap: 298px;
+	
+	padding-top: 0;
+	padding-left: 1px;
+	padding-bottom: 20px;
+}
+
+.modal__button {
+	border: 1px solid gainsboro;
+	border-radius: 5px;
+}
+
+.modal__button_cursor {
+    cursor:pointer;
 }
 </style>
