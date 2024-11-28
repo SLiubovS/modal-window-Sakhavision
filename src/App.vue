@@ -11,50 +11,44 @@ const modalMask = ref<string>('modal-mask');
 function openModalWindow() {
   openWindow.value = true;
   backgroundColor.value = true;
+  selectedId.value = null;
 }
 
 function closeModalWindow() {
   openWindow.value = false;
-  backgroundColor.value= false;
+  backgroundColor.value = false;
 }
 
 function selectHandler(id: number | null): void {
   selectedId.value = id;
 }
-
-
 </script>
 
 <template>
 
   <div :class="[backgroundColor ? modalMask : '']">
     <div class="container">
-    <button type="button" @click="openModalWindow" class="container__btn-open">
-      Открыть
-    </button>
-    <div>
-      <span>
-        {{ selectedId ?? "" }}
-      </span>
+      <button type="button" @click="openModalWindow" class="container__btn-open">
+        Открыть
+      </button>
+      <div class="container__selectId">
+        <span v-if="selectedId != null">
+          id папки: {{ selectedId ?? "" }}
+        </span>
+        <span v-else>
+          {{ selectedId ?? "" }}
+        </span>
+      </div>
     </div>
-  </div>
-  <Transition>
-    <ModalWindowComponent title="Модальное окно" v-if="openWindow" @close="closeModalWindow" @select="selectHandler">
-    </ModalWindowComponent>
-</Transition>
+    <Transition>
+      <ModalWindowComponent title="Модальное окно" v-if="openWindow" @close="closeModalWindow" @select="selectHandler">
+      </ModalWindowComponent>
+    </Transition>
   </div>
 
 </template>
 
 <style scoped>
-
-.container {
-  z-index: -1;
-  position: absolute;
-  top: 45%;
-  left: 45%;
-}
-
 .modal-mask {
   position: fixed;
   z-index: 2;
@@ -66,6 +60,13 @@ function selectHandler(id: number | null): void {
   display: table;
 }
 
+.container {
+  z-index: -1;
+  position: absolute;
+  top: 45%;
+  left: 45%;
+}
+
 .container__btn-open {
   padding: 0.5em 1.5em;
   font-size: 0.9em;
@@ -73,6 +74,18 @@ function selectHandler(id: number | null): void {
   border: 1px solid;
   border-radius: 0.4em;
 }
+
+.container__selectId {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-top: 20px;
+}
+
+/* .container__btn-open,
+.container__selectId {
+  left: 50%;
+ transform: translateX(-50%); 
+} */
 
 .v-enter-active,
 .v-leave-active {

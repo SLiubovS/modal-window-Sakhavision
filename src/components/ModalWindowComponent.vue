@@ -6,8 +6,8 @@ defineProps<{
 }>()
 
 const emit = defineEmits<{
-  select: [id: number | null]
-  close: []
+	select: [id: number | null]
+	close: []
 }>()
 
 let selectedId: number | null = null;
@@ -64,7 +64,7 @@ function selectHandler(id: number): void {
 	z-index: 10;
 	background-color: rgb(255, 255, 255);
 	box-sizing: border-box;
-	overflow:auto;
+	overflow: auto;
 }
 
 .modal__header {
@@ -81,7 +81,7 @@ function selectHandler(id: number): void {
 	display: grid;
 	grid-template-columns: 100px 100px;
 	gap: 298px;
-	
+
 	padding-top: 0;
 	padding-left: 1px;
 	padding-bottom: 20px;
@@ -93,6 +93,6 @@ function selectHandler(id: number): void {
 }
 
 .modal__button_cursor {
-    cursor:pointer;
+	cursor: pointer;
 }
 </style>

@@ -25,7 +25,7 @@ function openChild(): void {
     emit('select', props.folder.id);
 }
 
-function selectChildHandler(id: number): void  {
+function selectChildHandler(id: number): void {
     emit('select', id);
 }
 
@@ -34,11 +34,13 @@ function selectChildHandler(id: number): void  {
 <template>
     <ul>
         <li>
-            <span @click.self="openChild" :class="{ active: isSelected }" class="modal__body-list modal__body-list_cursor">
-                {{ folder.name }}
+            <span @click.self="openChild" :class="{ active: isSelected }"
+                class="modal__body-list modal__body-list_cursor">
+                {{ folder.name }}, id: {{ folder.id }}
             </span>
             <span v-show="showChild" class="container__list container__list_cursor">
-                <TreeItemComponent v-for="child in folder.children" :key="child.id" :folder="child" :selected-id="selectedId" @select="selectChildHandler">
+                <TreeItemComponent v-for="child in folder.children" :key="child.id" :folder="child"
+                    :selected-id="selectedId" @select="selectChildHandler">
                 </TreeItemComponent>
             </span>
         </li>
@@ -47,8 +49,8 @@ function selectChildHandler(id: number): void  {
 
 <style scoped>
 .active {
-    color:cornflowerblue;
-    font-style:italic;
+    color: cornflowerblue;
+    font-style: italic;
 }
 
 ul {
@@ -56,13 +58,12 @@ ul {
 }
 
 ul li:before {
-    content:  "—";
+    content: "—";
     position: relative;
-    left:     -5px;
+    left: -5px;
 }
 
 .modal__body-list_cursor {
-    cursor:pointer;
+    cursor: pointer;
 }
-
 </style>
