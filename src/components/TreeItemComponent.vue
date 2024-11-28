@@ -50,7 +50,6 @@ function selectChildHandler(id: number): void {
 <style scoped>
 .active {
     color: cornflowerblue;
-    font-style: italic;
 }
 
 ul {

@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import { ref, type Ref } from 'vue';
 import TreeComponent from './TreeComponent.vue';
+import type { IFolder } from '../models/IFolder';
 
 defineProps<{
 	title: string
@@ -9,6 +11,30 @@ const emit = defineEmits<{
 	select: [id: number | null]
 	close: []
 }>()
+
+const mockFolders: Ref<Array<IFolder>> = ref([
+    {
+        id: 1, name: 'Папка 1', children: [
+            { id: 2, name: 'Папка 1.1', children: [] },
+            {
+                id: 3, name: 'Папка 1.2', children: [
+                    { id: 4, name: 'Папка 1.2.1', children: [] }
+                ]
+            }
+        ]
+    },
+    { id: 5, name: 'Папка 2', children: [] },
+    {
+        id: 6, name: 'Папка 3', children: [
+            { id: 7, name: 'Папка 3.1', children: [] },
+            {
+                id: 8, name: 'Папка 3.2', children: [
+                    { id: 9, name: 'Папка 3.2.1', children: [] }
+                ]
+            }
+        ]
+    },
+]);
 
 let selectedId: number | null = null;
 
@@ -35,7 +61,7 @@ function selectHandler(id: number): void {
 		</h3>
 
 		<div class="modal__body">
-			<TreeComponent @select="selectHandler">
+			<TreeComponent @select="selectHandler" :folders="mockFolders">
 			</TreeComponent>
 
 		</div>
@@ -80,10 +106,8 @@ function selectHandler(id: number): void {
 .modal__footer_pozition {
 	display: grid;
 	grid-template-columns: 100px 100px;
-	gap: 298px;
-
-	padding-top: 0;
-	padding-left: 1px;
+	gap: 258px;
+	padding: 0 20px;
 	padding-bottom: 20px;
 }
 

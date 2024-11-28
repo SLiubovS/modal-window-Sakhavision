@@ -33,17 +33,15 @@ function selectHandler(id: number | null): void {
       </button>
       <div class="container__selectId">
         <span v-if="selectedId != null">
-          id папки: {{ selectedId ?? "" }}
+          id выбранной папки: {{ selectedId ?? "" }}
         </span>
         <span v-else>
           {{ selectedId ?? "" }}
         </span>
       </div>
     </div>
-    <Transition>
       <ModalWindowComponent title="Модальное окно" v-if="openWindow" @close="closeModalWindow" @select="selectHandler">
       </ModalWindowComponent>
-    </Transition>
   </div>
 
 </template>
@@ -65,6 +63,7 @@ function selectHandler(id: number | null): void {
   position: absolute;
   top: 45%;
   left: 45%;
+  text-align: center;
 }
 
 .container__btn-open {
@@ -79,21 +78,5 @@ function selectHandler(id: number | null): void {
   text-align: center;
   font-size: 1.2rem;
   margin-top: 20px;
-}
-
-/* .container__btn-open,
-.container__selectId {
-  left: 50%;
- transform: translateX(-50%); 
-} */
-
-.v-enter-active,
-.v-leave-active {
-  transition: opacity 0.5s ease;
-}
-
-.v-enter-from,
-.v-leave-to {
-  opacity: 0;
 }
 </style>
