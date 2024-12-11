@@ -26,3 +26,10 @@ npm run dev
 2. `TreeComponent.vue` - компонент дерево папок. Принимает на вход `folders` (дерево папок), генерирует событие `select`. Состоит из компонентов `TreeItemComponent.vue`.  
 
 3. `TreeItemComponent.vue` - элемент дерева папок. Принимает на вход `folder` и `selectedId`, генерирует событие `select`. Отвечает за отрисовку самого себя и дочерних папок. Входной параметр `selectedId` используется для подсвечивания выбранной папки.
+
+## Скриншоты приложения  
+
+![Скриншот стартовой страницы.](./src/screenshot/start.png)
+![Скриншот модального окна.](./src/screenshot/modalWimdow.png)
+![Скриншот выбранной папки дерева.](./src/screenshot/selectFolder.png)
+![Скриншот после нажатия на "ok".](./src/screenshot/end.png)
